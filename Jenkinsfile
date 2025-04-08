@@ -2,27 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout Code') {
             steps {
-                echo 'Building the application...'
-                // Add your build steps here (e.g., Docker build)
-                sh 'docker build -t snake-game-app .'
+                echo 'Pulling code from Git repository...'
+                sh 'git clone https://github.com/amanuddinu4/snakeapp.git .'
             }
         }
 
-        stage('Test') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Testing the application...'
-                // Add your test commands here (e.g., Docker test scripts or unit tests)
-                sh 'echo "No tests configured, skipping..."'
+                echo 'Building the Docker image...'
+                sh 'docker build . -t snakegame' // Correct syntax
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy Application') {
             steps {
                 echo 'Deploying the application...'
-                // Deploy the Docker container
-                sh 'docker run -d -p 8080:80 snake-game-app'
+                sh 'docker run -d -p 8080:80 snakegame'
             }
         }
     }
@@ -32,10 +29,10 @@ pipeline {
             echo 'Pipeline execution finished.'
         }
         success {
-            echo 'Pipeline completed successfully.'
+            echo 'Application deployed successfully. You can access it at http://localhost:8080.'
         }
         failure {
-            echo 'Pipeline failed. Please check the logs for errors.'
+            echo 'Pipeline failed. Check the logs to debug the issue.'
         }
     }
 }
