@@ -1,0 +1,33 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+canvas {
+    border: 1px solid white;
+    background-color: gold;
+}
+#p1, #p2 {
+    color: red;
+    position: absolute;
+    left: 100px;
+}
+#p1 { top: 10px; }
+#p2 { top: 30px; }
+#score, #high {
+    color: yellow;
+    position: absolute;
+}
+#score { left: 155px; top: 10px; }
+#high { left: 195px; top: 30px; }
+#btn_stop {
+    color: brown;
+    position: absolute;
+    left: 100px;
+    top: 80px;
+}
