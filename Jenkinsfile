@@ -12,14 +12,14 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building the Docker image...'
-                sh 'docker build . -t snakegame' // Correct syntax
+                sh 'docker build . -t snakegame' // Remove 'sh' before the Docker command
             }
         }
 
         stage('Deploy Application') {
             steps {
                 echo 'Deploying the application...'
-                sh 'docker run -d -p 8080:80 snakegame'
+                sh 'docker run -d -p 8080:80 snakegame' // Run the Docker container
             }
         }
     }
