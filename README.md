@@ -75,11 +75,10 @@ Pipeline Script :<br>
 
 Below is the complete pipeline script:<br>
 
-pipeline {
-    agent any
-
-    stages {
-        stage('Checkout') {
+  pipeline {
+        agent any
+        stages {
+           stage('Checkout') {
             steps {
                 // Checkout the code from your Git repository
                 git url: 'https://github.com/amanuddinu4/snakeapp', branch: 'main'
@@ -121,6 +120,7 @@ pipeline {
         }
     }
 }
+<br>
 <br>
 Accessing the Application:<br>
 
