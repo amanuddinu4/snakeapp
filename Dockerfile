@@ -1,14 +1,8 @@
-# Use the official Nginx base image
+# Use an official Nginx image as a base
 FROM nginx:alpine
 
-# Set the working directory inside the container
-WORKDIR /usr/share/nginx/html
+# Copy the built files to the Nginx HTML directory
+COPY ./dist /usr/share/nginx/html
 
-# Copy all game files to the Nginx web server's root directory
-COPY index.html style.css script.js ./
-
-# Expose port 80 to make the application accessible
+# Expose port 80
 EXPOSE 80
-
-# Start the Nginx server
-CMD ["nginx", "-g", "daemon off;"]
